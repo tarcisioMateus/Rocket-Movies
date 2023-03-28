@@ -18,7 +18,6 @@ export const Container = styled.div`
     padding: 2.4rem;
 
     &::placeholder {
-      font-size: 1.6rem;
       color: ${ ({theme}) => theme.COLORS.GRAY_300 };
     }
   }

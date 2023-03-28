@@ -30,7 +30,8 @@ export default createGlobalStyle`
   input, body, button, a {
     font-family: ${ ({theme}) => theme.FONTFAMILY.SLAB };
     color: ${ ({theme}) => theme.COLORS.WHITE };
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    outline: none;
   }
 
   a {
