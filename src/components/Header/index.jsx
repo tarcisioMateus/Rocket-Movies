@@ -10,7 +10,7 @@ export function Header () {
       <Profile>
         <div>
           <strong>Tarcísio Mateus</strong>
-          <span>Log out</span>
+          <button>Log out</button>
         </div>
         <img 
         src = 'https://github.com/tarcisioMateus.png'

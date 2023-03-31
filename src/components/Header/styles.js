@@ -33,8 +33,10 @@ export const Profile = styled.div`
       white-space: nowrap;
     }
 
-    span {
+    button {
       color: ${ ({theme}) => theme.COLORS.GRAY_300 };
+      background: none;
+      border: none;
     }
   }
 
