@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const Container = styled.header`
+  grid-area: header;
+  
   display: flex;
   align-items: center;
   gap: 6.4rem;
@@ -13,7 +15,7 @@ export const Container = styled.header`
   >h1 {
     font-size: 2.4rem;
     line-height: 3.2rem;
-    color: ${ ({theme}) => theme.COLORS.PINK}
+    color: ${ ({theme}) => theme.COLORS.PINK};
   }
 `
 

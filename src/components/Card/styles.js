@@ -5,6 +5,8 @@ export const Container = styled.div`
   padding: 3.2rem;
   border-radius: 1.6rem;
 
+  cursor: pointer;
+
   >h2 {
     font-size: 2.4rem;
     line-height: 3.2rem;
