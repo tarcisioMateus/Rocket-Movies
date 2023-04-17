@@ -26,8 +26,9 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  padding: 0 12.6rem;
-  padding-bottom: 5.8rem;
+  margin: 0 12.6rem;
+  margin-bottom: 5.8rem;
+  padding-right: 0.8rem;
 
   &::-webkit-scrollbar {
     width: 0.8rem;
@@ -38,7 +39,6 @@ export const Content = styled.div`
   }
  
   &::-webkit-scrollbar-thumb {
-
     background-color: ${ ({theme}) => theme.COLORS.PINK};
     border-radius: 0.8rem;
     outline: none;

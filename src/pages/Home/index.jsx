@@ -10,7 +10,7 @@ export function Home () {
   return (
     <Container>
       <Header/>
-
+      
       <Add>
         <h1>My Movies</h1>
         <Button icon={FiPlus} title='add movie'/>
