@@ -27,7 +27,7 @@ export function Home () {
             radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação 
             secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de 
             minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições'
-          tags={[{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}]} stars={[1,1,1,1,0]}/>
+          tags={[{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}]} stars={4}/>
         
         <Card title='Interestellar' 
           description='Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade
@@ -38,7 +38,7 @@ export function Home () {
             radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação 
             secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de 
             minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições'
-          tags={[{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}]} stars={[1,1,1,0,0]}/>
+          tags={[{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}]} stars={3}/>
         
         <Card title='Interestellar' 
           description='Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade
@@ -49,7 +49,7 @@ export function Home () {
             radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação 
             secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de 
             minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições'
-          tags={[{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}]} stars={[1,1,1,0,0]}/>
+          tags={[{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}]} stars={2}/>
         
       </Content>
     

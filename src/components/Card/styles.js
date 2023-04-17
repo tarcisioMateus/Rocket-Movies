@@ -13,17 +13,6 @@ export const Container = styled.div`
     margin-bottom: 0.8rem;
   }
 
-  .stars {
-    display: flex;
-    gap: 0.6rem;
-    margin-bottom: 1.6rem;
-
-    >svg {
-      font-size: 1.2rem;
-      color: ${ ({theme}) => theme.COLORS.PINK};
-    }
-  }
-
   >p {
     font-size: 1.6rem;
     line-height: 1.9rem;
