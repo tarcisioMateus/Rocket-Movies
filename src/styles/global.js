@@ -27,7 +27,7 @@ export default createGlobalStyle`
     background-color: ${ ({theme}) => theme.COLORS.BACKGROUND_800 };
   }
 
-  input, body, button, a {
+  textarea, input, body, button, a {
     font-family: ${ ({theme}) => theme.FONTFAMILY.SLAB };
     color: ${ ({theme}) => theme.COLORS.WHITE };
     font-size: 1.4rem;
