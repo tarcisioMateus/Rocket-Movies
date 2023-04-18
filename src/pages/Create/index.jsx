@@ -5,6 +5,7 @@ import { ButtonText } from '../../components/ButtonText'
 import { Input } from '../../components/Input'
 import { TextArea } from '../../components/TextArea'
 import { Item } from '../../components/Item'
+import { Button } from '../../components/Button'
 
 import { Container, Form } from "./styled"
 
@@ -15,11 +16,22 @@ export function Create () {
       <Form>
         <ButtonText title='back' icon={BsArrowLeft}/>
         <h2>New Movie</h2>
-        <Input placeholder='title'/>
-        <Input placeholder='rating (between 0 - 5)'/>
+        <div className="inputs">
+          <Input placeholder='title'/>
+          <Input placeholder='rating (between 0 - 5)'/>
+        </div>
         <TextArea placeholder='details'/>
-        <Item value='React'/>
-        <Item placeholder='New item' isNew/>
+        <section>
+          <h3>Tags</h3>
+          <div className="tags">
+            <Item value='React'/>
+            <Item placeholder='New item' isNew/>
+          </div>
+        </section>
+        <div className="buttons">
+          <Button title='Delete movie'/>
+          <Button title='Save changes'/>
+        </div>
       </Form>
     </Container>
   )
