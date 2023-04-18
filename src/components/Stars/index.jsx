@@ -13,6 +13,8 @@ export function Stars ({amount, large = false}) {
 
 function getArrayRepresentation (amount) {
   switch (amount) {
+    case 0:
+      return [0,0,0,0,0]
     case 1:
       return [1,0,0,0,0]
     case 2:

@@ -5,13 +5,13 @@ import { ThemeProvider } from 'styled-components'
 import theme from '../src/styles/theme'
 import GlobalStyle from '../src/styles/global'
 
-import { Preview } from './pages/Preview'
+import { Create } from './pages/Create'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle/>
-      <Preview/>
+      <Create/>
     </ThemeProvider>
   </React.StrictMode>
 )
