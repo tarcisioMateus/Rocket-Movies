@@ -4,6 +4,7 @@ import { Header } from '../../components/Header'
 import { ButtonText } from '../../components/ButtonText'
 import { Input } from '../../components/Input'
 import { TextArea } from '../../components/TextArea'
+import { Item } from '../../components/Item'
 
 import { Container, Form } from "./styled"
 
@@ -17,6 +18,8 @@ export function Create () {
         <Input placeholder='title'/>
         <Input placeholder='rating (between 0 - 5)'/>
         <TextArea placeholder='details'/>
+        <Item value='React'/>
+        <Item placeholder='New item' isNew/>
       </Form>
     </Container>
   )
