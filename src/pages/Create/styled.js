@@ -13,20 +13,6 @@ export const Form = styled.form`
   overflow-y: auto;
   margin: 4rem 12.3rem 8rem;
   padding-right: 1.6rem;
-
-  &::-webkit-scrollbar {
-    width: 0.8rem;
-  }
- 
-  &::-webkit-scrollbar-track {
-    color: transparent;
-  }
- 
-  &::-webkit-scrollbar-thumb {
-    background-color: ${ ({theme}) => theme.COLORS.PINK};
-    border-radius: 0.8rem;
-    outline: none;
-  }
   
   >h2 {
     margin: 2.4rem 0 4rem;
@@ -42,17 +28,13 @@ export const Form = styled.form`
     margin-bottom: 4rem;
   }
 
-  textarea {
-    margin-bottom: 4rem;
-  }
-
   section {
     >h3 {
       font-weight: 400;
       font-size: 2rem;
       line-height: 2.6rem;
       color: ${ ({theme}) => theme.COLORS.GRAY_100};
-      margin-bottom: 2.4rem;
+      margin: 4rem 0 2.4rem;
     }
 
     .tags {
@@ -70,10 +52,6 @@ export const Form = styled.form`
     display: flex;
     align-items: center;
     gap: 4rem;
-
-    button {
-      flex: 1;
-    }
 
     button:first-of-type {
       background-color: ${ ({theme}) => theme.COLORS.BACKGROUND_900};

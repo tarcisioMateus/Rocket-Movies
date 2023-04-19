@@ -17,10 +17,10 @@ export function Create () {
         <ButtonText title='back' icon={BsArrowLeft}/>
         <h2>New Movie</h2>
         <div className="inputs">
-          <Input placeholder='title'/>
-          <Input placeholder='rating (between 0 - 5)'/>
+          <Input label='title'/>
+          <Input label='rating (between 0 - 5)'/>
         </div>
-        <TextArea placeholder='details'/>
+        <TextArea label='details'/>
         <section>
           <h3>Tags</h3>
           <div className="tags">

@@ -14,20 +14,6 @@ export const Content = styled.div`
   margin: 4rem 12.3rem 8rem;
   padding-right: 1.6rem;
 
-  &::-webkit-scrollbar {
-    width: 0.8rem;
-  }
- 
-  &::-webkit-scrollbar-track {
-    color: transparent;
-  }
- 
-  &::-webkit-scrollbar-thumb {
-    background-color: ${ ({theme}) => theme.COLORS.PINK};
-    border-radius: 0.8rem;
-    outline: none;
-  }
-
   .header {
     display: flex;
     align-items: center;

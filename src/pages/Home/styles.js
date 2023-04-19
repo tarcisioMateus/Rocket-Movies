@@ -17,6 +17,10 @@ export const Add = styled.div`
   justify-content: space-between;
 
   padding: 4.8rem 12.6rem 3.6rem;
+
+  >button {
+    width: fit-content;
+  }
 `
 
 export const Content = styled.div`
@@ -30,17 +34,4 @@ export const Content = styled.div`
   margin-bottom: 5.8rem;
   padding-right: 0.8rem;
 
-  &::-webkit-scrollbar {
-    width: 0.8rem;
-  }
- 
-  &::-webkit-scrollbar-track {
-    color: transparent;
-  }
- 
-  &::-webkit-scrollbar-thumb {
-    background-color: ${ ({theme}) => theme.COLORS.PINK};
-    border-radius: 0.8rem;
-    outline: none;
-  }
 `

@@ -5,6 +5,20 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+      width: 0.8rem;
+    }
+ 
+    &::-webkit-scrollbar-track {
+      color: transparent;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: ${ ({theme}) => theme.COLORS.PINK};
+      border-radius: 0.8rem;
+      outline: none;
+    }
   }
 
   :root {

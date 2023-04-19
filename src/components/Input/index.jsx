@@ -5,7 +5,7 @@ export function Input ({ label, icon: Icon, ...rest}) {
     <Container>
       <label htmlFor={label} className='sr-only'> {label} </label>
       {Icon && <Icon/>}
-      <input {...rest} id={label}/>
+      <input {...rest} id={label} placeholder={label}/>
     </Container>
   )
 }

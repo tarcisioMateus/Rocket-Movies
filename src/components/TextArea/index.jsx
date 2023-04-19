@@ -1,7 +1,10 @@
 import { Container } from "./styles"
 
-export function TextArea ({...rest}) {
+export function TextArea ({label, ...rest}) {
   return (
-    <Container{...rest}/>
+    <Container>
+      <textarea {...rest} id={label} placeholder={label}/>
+      <label htmlFor={label} className='sr-only'> {label} </label>
+    </Container>
   )
 }

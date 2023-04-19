@@ -6,7 +6,7 @@ export function Header () {
   return (
     <Container>
       <h1>RocketMovies</h1>
-      <Input placeholder='Search by title' lable='Search by title'/>
+      <Input label='Search by title'/>
       <Profile>
         <div>
           <strong>Tarcísio Mateus</strong>

@@ -7,6 +7,7 @@ export const Container = styled.button`
   padding: 3.2rem;
   gap: 0.8rem;
 
+  width: 100%;
   height: 4.8rem;
   border-radius: 0.8rem;
   border: none;
