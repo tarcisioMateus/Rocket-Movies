@@ -7,7 +7,9 @@ export const Container = styled.div`
 
 export const Img = styled.div`
   flex: 1;
+  min-height: 100vh;
   background: url(${backgroungimg}) center no-repeat;
+  background-size: cover;
   filter: brightness(0.5);
 `
 
