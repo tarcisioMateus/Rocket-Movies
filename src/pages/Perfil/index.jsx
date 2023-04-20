@@ -24,9 +24,9 @@ export function Perfil () {
         </label>
         </Profile>
         <Input label='Name' icon={FiUser}/>
-        <Input label='Email' icon={FiMail}/>
-        <Input label='Current password' icon={FiLock}/>
-        <Input label='New password' icon={FiLock}/>
+        <Input label='Email' icon={FiMail} type='email'/>
+        <Input label='Current password' icon={FiLock} type='password'/>
+        <Input label='New password' icon={FiLock} type='password'/>
         <Button title='Save'/>
       </Form>
     </>
