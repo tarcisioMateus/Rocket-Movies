@@ -18,7 +18,7 @@ export function SignUp() {
         <Input icon={FiMail} label='E-mail' type='email'/>
         <Input icon={FiLock} label='Password' type='password'/>
         <Button title='access'/>
-        <ButtonText title='Back to login' icon={BsArrowLeft}/>
+        <ButtonText title='Back to login' icon={BsArrowLeft} to='/'/>
       </Form>
       <Img/>
     </Container>

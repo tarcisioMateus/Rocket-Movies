@@ -24,7 +24,7 @@ export const Profile = styled.div`
   align-items: center;
   gap: 0.8rem;
 
-  >div {
+  >div:first-of-type {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -42,11 +42,18 @@ export const Profile = styled.div`
     }
   }
 
-  >img {
+  >div:last-of-type {
     width: 6.4rem;
     height: 6.4rem;
     border-radius: 50%;
-
+    
+    >img {
+      width: 6.4rem;
+      height: 6.4rem;
+      border-radius: 50%;
+    }
+    
+    position: relative;
     cursor: pointer;
   }
 `

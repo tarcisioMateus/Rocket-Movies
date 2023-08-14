@@ -14,7 +14,7 @@ export function Preview() {
       <Header/>
 
       <Content>
-        <ButtonText title='back' icon={BsArrowLeft}/>
+        <ButtonText title='back' icon={BsArrowLeft} to='/'/>
         <div className="header">
           <h2>Interestellar</h2>
           <Stars amount={2} large/>

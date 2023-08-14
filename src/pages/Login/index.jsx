@@ -16,7 +16,7 @@ export function Login() {
         <Input icon={FiMail} label='E-mail' type='email'/>
         <Input icon={FiLock} label='Password' type='password'/>
         <Button title='access'/>
-        <ButtonText title='Create an account'/>
+        <ButtonText title='Create an account' to='/signup'/>
       </Form>
       <Img/>
     </Container>

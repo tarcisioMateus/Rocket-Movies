@@ -11,7 +11,7 @@ export function Perfil () {
   return (
     <>
       <Header>
-        <ButtonText title='back' icon={BsArrowLeft}/>
+        <ButtonText title='back' icon={BsArrowLeft} to='/'/>
       </Header>
       <Form>
         <Profile>

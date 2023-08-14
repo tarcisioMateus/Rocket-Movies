@@ -37,6 +37,12 @@ export default createGlobalStyle`
     border: none;
   }
 
+  .invisible-link {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+  
   body {
     background-color: ${ ({theme}) => theme.COLORS.BACKGROUND_800 };
   }

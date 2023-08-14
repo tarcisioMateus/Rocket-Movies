@@ -13,12 +13,12 @@ export function Home () {
       
       <Add>
         <h1>My Movies</h1>
-        <Button icon={FiPlus} title='add movie'/>
+        <Button icon={FiPlus} title='add movie' to='/create'/>
       </Add>
 
       <Content>
 
-        <Card title='Interestellar' 
+        <Card title='Interestellar' id={1} 
           description='Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade
           agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua
             família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado 
@@ -29,7 +29,7 @@ export function Home () {
             minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições'
           tags={[{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}]} stars={4}/>
         
-        <Card title='Interestellar' 
+        <Card title='Interestellar' id={2}
           description='Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade
           agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua
             família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado 
@@ -40,7 +40,7 @@ export function Home () {
             minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições'
           tags={[{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}]} stars={3}/>
         
-        <Card title='Interestellar' 
+        <Card title='Interestellar' id={3}
           description='Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade
           agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua
             família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado 

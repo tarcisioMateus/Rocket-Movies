@@ -14,7 +14,7 @@ export function Create () {
     <Container>
       <Header/>
       <Form>
-        <ButtonText title='back' icon={BsArrowLeft}/>
+        <ButtonText title='back' icon={BsArrowLeft} to='/'/>
         <h2>New Movie</h2>
         <div className="inputs">
           <Input label='title'/>
