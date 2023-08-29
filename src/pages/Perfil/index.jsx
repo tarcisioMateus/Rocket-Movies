@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../hooks/auth'
 
 import { BsArrowLeft } from 'react-icons/bs'
 import { FiCamera, FiUser, FiMail, FiLock } from 'react-icons/fi'
@@ -10,6 +12,12 @@ import { Button } from '../../components/Button'
 import { Header, Profile, Form } from "./styles"
 
 export function Perfil () {
+  const { user } = useAuth()
+
+  const [name, setName] = useState(user.name)
+  const [email, setEmail] = useState(user.email)
+  const [currentPassword, setCurrentPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
 
   const navigate = useNavigate()
 
@@ -21,6 +29,7 @@ export function Perfil () {
         />
       </Header>
       <Form>
+
         <Profile>
         <img 
         src = 'https://github.com/tarcisioMateus.png'
@@ -30,10 +39,24 @@ export function Perfil () {
           <input type="file"/>
         </label>
         </Profile>
-        <Input label='Name' icon={FiUser}/>
-        <Input label='Email' icon={FiMail} type='email'/>
-        <Input label='Current password' icon={FiLock} type='password'/>
-        <Input label='New password' icon={FiLock} type='password'/>
+
+        <Input label='Name' icon={FiUser}
+          value={name}
+          onChange={e => setName(e.target.value)}
+        />
+        <Input label='Email' icon={FiMail} 
+          value={email}
+          type='email'
+          onChange={e => setEmail(e.target.value)}
+        />
+        <Input label='Current password' icon={FiLock} 
+          type='password'
+          onChange={e => setCurrentPassword(e.target.value)}
+        />
+        <Input label='New password' icon={FiLock} 
+          type='password'
+          onChange={e => setNewPassword(e.target.value)}
+        />
         <Button title='Save'/>
       </Form>
     </>
