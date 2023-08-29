@@ -5,8 +5,8 @@ export const Container = styled.div`
   align-items: center;
   gap: 1.6rem;
   padding: 1.6rem;
-  background-color: ${ ({theme, isNew}) => isNew ? "transparent" : theme.COLORS.BACKGROUND_700 };
-  border: ${ ({theme, isNew}) => isNew ? `0.2rem dashed ${theme.COLORS.GRAY_300}` : 'none' };
+  background-color: ${ ({theme, $isnew}) => $isnew ? "transparent" : theme.COLORS.BACKGROUND_700 };
+  border: ${ ({theme, $isnew}) => $isnew ? `0.2rem dashed ${theme.COLORS.GRAY_300}` : 'none' };
   border-radius: 1rem;
   width: fit-content;
 

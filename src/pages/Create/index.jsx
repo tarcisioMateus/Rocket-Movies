@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { BsArrowLeft } from 'react-icons/bs'
@@ -13,7 +14,24 @@ import { Container, Form } from "./styled"
 
 export function Create () {
 
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [rating, setRating] = useState('')
+
+  const [newTag, setNewTag] = useState('')
+  const [tags, setTags] = useState([])
+
   const navigate = useNavigate()
+
+  function addNewTag() {
+    if (!newTag) return
+    setTags( prev => [...prev, newTag])
+    setNewTag('')
+  }
+
+  function removeTag(name) {
+    setTags( prev => prev.filter(tag => tag !== name))
+  }
 
   return (
     <Container>
@@ -24,15 +42,39 @@ export function Create () {
         />
         <h2>New Movie</h2>
         <div className="inputs">
-          <Input label='title'/>
-          <Input label='rating (between 0 - 5)'/>
+
+          <Input label='title'
+            onChange={ e => setTitle(e.target.value)}
+          />
+          <Input label='rating (between 0 - 5)'
+            onChange={ e => setRating(e.target.value)}
+          />
+
         </div>
-        <TextArea label='details'/>
+
+        <TextArea label='details'
+          onChange={ e => setDescription(e.target.value)}
+        />
         <section>
           <h3>Tags</h3>
           <div className="tags">
-            <Item value='React'/>
-            <Item placeholder='New item' isNew/>
+
+            {
+              tags.map((tag, index) => {
+                return <Item key={String(index)}
+                  value={tag}
+                  onClick={() => removeTag(tag)}
+                />
+              })
+            }
+
+            <Item placeholder='New item' isNew
+              key='1000'
+              value={newTag}
+              onChange={ e => setNewTag(e.target.value)}
+              onClick={addNewTag}
+            />
+
           </div>
         </section>
         <div className="buttons">
