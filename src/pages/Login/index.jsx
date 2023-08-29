@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FiMail, FiLock} from 'react-icons/fi'
 
@@ -8,6 +9,8 @@ import { ButtonText } from '../../components/ButtonText'
 import { Container, Form, Img } from "./styles"
 
 export function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
 
@@ -17,8 +20,14 @@ export function Login() {
         <h1>RocketMovies</h1>
         <p>To keep up with everyting you watch!</p>
         <h2>Login</h2>
-        <Input icon={FiMail} label='E-mail' type='email'/>
-        <Input icon={FiLock} label='Password' type='password'/>
+        <Input icon={FiMail} label='E-mail' 
+          type='email'
+          onChange={e => setEmail(e.target.value)}
+        />
+        <Input icon={FiLock} label='Password' 
+          type='password'
+          onChange={e => setPassword(e.target.value)}
+        />
         <Button title='access'/>
         
         <ButtonText title='Create an account' 
