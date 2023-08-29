@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../hooks/auth'
+
 import { FiMail, FiLock} from 'react-icons/fi'
 
 import { Input } from '../../components/Input'
@@ -9,10 +11,16 @@ import { ButtonText } from '../../components/ButtonText'
 import { Container, Form, Img } from "./styles"
 
 export function Login() {
+  const { login } = useAuth()
+  
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
+
+  async function handleLogin() {
+    await login({ email, password })
+  }
 
   return (
     <Container>
@@ -28,7 +36,9 @@ export function Login() {
           type='password'
           onChange={e => setPassword(e.target.value)}
         />
-        <Button title='access'/>
+        <Button title='access'
+          onClick={handleLogin}
+        />
         
         <ButtonText title='Create an account' 
           onClick={ () => navigate('/signup')}
