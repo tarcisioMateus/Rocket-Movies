@@ -1,5 +1,9 @@
+import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/auth"
+
+import { api } from '../../services'
+import avatarPlaceHolder from '../../assets/avatar_placeholder.svg'
 
 import { Input } from "../Input"
 
@@ -8,6 +12,10 @@ import { Container, Profile } from "./styles"
 export function Header () {
   const { logOut, user } = useAuth()
   const navigate = useNavigate()
+
+  const [avatar, setAvatar] = useState( 
+    user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceHolder 
+  )
 
   function handleLogOut() {
     navigate('/')
@@ -30,7 +38,7 @@ export function Header () {
         </div>
         <div>
           <img 
-          src = 'https://github.com/tarcisioMateus.png'
+          src = {avatar}
           alt = "Picture from user"/>
           <Link to='/perfil' className='invisible-link'/>
         </div>
