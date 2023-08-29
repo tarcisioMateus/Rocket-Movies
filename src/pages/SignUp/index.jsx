@@ -28,7 +28,7 @@ export function SignUp() {
       if (error.response) {
         alert(error.response.data.message)
       } else {
-        alert('unable to create accont right now, try again later')
+        alert('unable to create account right now, try again later')
       }
     })
   }
