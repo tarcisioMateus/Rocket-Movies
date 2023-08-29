@@ -32,21 +32,30 @@ function AuthProvider ({ children }) {
     setData({})
   }
 
-  async function updateUser ({ user }) {
+  async function updateUser ({ user, avatarFile }) {
     try {
       
+      if (avatarFile) {
+        const uploadAvatarForm = new FormData()
+        uploadAvatarForm.append('avatar', avatarFile)
+
+        const response = await api.patch('/users/avatar', uploadAvatarForm)
+        user.avatar = response.data
+      }
       await api.put('/users', user)
       localStorage.setItem('@rocketMovies:user', JSON.stringify(user))
+
       setData({
         token: data.token,
         user
       })
+      alert('Profile updated!')
 
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message)
       } else {
-        alert('unable to login into account, try again later')
+        alert('unable to update profile right now, try again later')
       }
     }
   }

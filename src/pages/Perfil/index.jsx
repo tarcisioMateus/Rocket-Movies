@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 
+import { api } from '../../services'
+import avatarPlaceHolder from '../../assets/avatar_placeholder.svg'
+
 import { BsArrowLeft } from 'react-icons/bs'
 import { FiCamera, FiUser, FiMail, FiLock } from 'react-icons/fi'
 
@@ -16,8 +19,13 @@ export function Perfil () {
 
   const [name, setName] = useState(user.name)
   const [email, setEmail] = useState(user.email)
-  const [currentPassword, setCurrentPassword] = useState('')
-  const [newPassword, setNewPassword] = useState('')
+  const [currentPassword, setCurrentPassword] = useState()
+  const [newPassword, setNewPassword] = useState()
+
+  const [avatarFile, setAvatarFile] = useState(null)
+  const [avatar, setAvatar] = useState( 
+    user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceHolder 
+  )
 
   const navigate = useNavigate()
 
@@ -29,7 +37,15 @@ export function Perfil () {
       newPassword
     }
     const userUpdated = Object.assign(user, changes)
-    await updateUser({ user: userUpdated })
+    await updateUser({ user: userUpdated, avatarFile })
+  }
+
+  function handleAvatarUpload( event ) {
+    const file = event.target.files[0]
+    setAvatarFile( file )
+
+    const avatarView = URL.createObjectURL( file )
+    setAvatar(avatarView)
   }
 
   return (
@@ -43,11 +59,13 @@ export function Perfil () {
 
         <Profile>
         <img 
-        src = 'https://github.com/tarcisioMateus.png'
+        src = {avatar}
         alt = "Picture from user"/>
         <label>
           <FiCamera/>
-          <input type="file"/>
+          <input type="file"
+            onChange={(event) => handleAvatarUpload(event)}
+          />
         </label>
         </Profile>
 
