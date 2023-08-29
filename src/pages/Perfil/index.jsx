@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import { BsArrowLeft } from 'react-icons/bs'
 import { FiCamera, FiUser, FiMail, FiLock } from 'react-icons/fi'
 
@@ -8,10 +10,15 @@ import { Button } from '../../components/Button'
 import { Header, Profile, Form } from "./styles"
 
 export function Perfil () {
+
+  const navigate = useNavigate()
+
   return (
     <>
       <Header>
-        <ButtonText title='back' icon={BsArrowLeft} to='/'/>
+        <ButtonText title='back' icon={BsArrowLeft}
+          onClick={ () => navigate(-1)}
+        />
       </Header>
       <Form>
         <Profile>

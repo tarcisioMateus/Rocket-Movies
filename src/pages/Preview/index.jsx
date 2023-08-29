@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import { BsArrowLeft } from 'react-icons/bs'
 import { CiClock2 } from 'react-icons/ci'
 
@@ -9,12 +11,17 @@ import { Tag } from '../../components/Tag'
 import { Container, Content, TimeUser } from "./styles"
 
 export function Preview() {
+
+  const navigate = useNavigate()
+
   return (
     <Container>
       <Header/>
 
       <Content>
-        <ButtonText title='back' icon={BsArrowLeft} to='/'/>
+        <ButtonText title='back' icon={BsArrowLeft}
+          onClick={ () => navigate(-1)}
+        />
         <div className="header">
           <h2>Interestellar</h2>
           <Stars amount={2} large/>

@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import { FiPlus } from 'react-icons/fi'
 
 import { Header } from "../../components/Header"
@@ -7,13 +9,18 @@ import { Card } from "../../components/Card"
 import { Container, Add, Content } from "./styles"
 
 export function Home () {
+
+  const navigate = useNavigate()
+
   return (
     <Container>
       <Header/>
       
       <Add>
         <h1>My Movies</h1>
-        <Button icon={FiPlus} title='add movie' to='/create'/>
+        <Button icon={FiPlus} title='add movie'
+          onClick={ () => navigate('/create')}
+        />
       </Add>
 
       <Content>

@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import { BsArrowLeft } from 'react-icons/bs'
 
 import { Header } from '../../components/Header'
@@ -10,11 +12,16 @@ import { Button } from '../../components/Button'
 import { Container, Form } from "./styled"
 
 export function Create () {
+
+  const navigate = useNavigate()
+
   return (
     <Container>
       <Header/>
       <Form>
-        <ButtonText title='back' icon={BsArrowLeft} to='/'/>
+        <ButtonText title='back' icon={BsArrowLeft}
+          onClick={ () => navigate(-1)}
+        />
         <h2>New Movie</h2>
         <div className="inputs">
           <Input label='title'/>
