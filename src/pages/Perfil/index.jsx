@@ -12,7 +12,7 @@ import { Button } from '../../components/Button'
 import { Header, Profile, Form } from "./styles"
 
 export function Perfil () {
-  const { user } = useAuth()
+  const { user, updateUser } = useAuth()
 
   const [name, setName] = useState(user.name)
   const [email, setEmail] = useState(user.email)
@@ -20,6 +20,17 @@ export function Perfil () {
   const [newPassword, setNewPassword] = useState('')
 
   const navigate = useNavigate()
+
+  async function handleUpdateUser() {
+    const changes = {
+      name, 
+      email, 
+      currentPassword, 
+      newPassword
+    }
+    const userUpdated = Object.assign(user, changes)
+    await updateUser({ user: userUpdated })
+  }
 
   return (
     <>
@@ -57,7 +68,10 @@ export function Perfil () {
           type='password'
           onChange={e => setNewPassword(e.target.value)}
         />
-        <Button title='Save'/>
+
+        <Button title='Save'
+          onClick={handleUpdateUser}
+        />
       </Form>
     </>
   )
