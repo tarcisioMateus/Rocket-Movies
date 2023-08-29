@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { api } from '../../services'
 
 import { BsArrowLeft } from 'react-icons/bs'
 
@@ -31,6 +32,23 @@ export function Create () {
 
   function removeTag(name) {
     setTags( prev => prev.filter(tag => tag !== name))
+  }
+
+  async function handleSaveData() {
+    if (newTag) return alert('there is a tag field in open, add it or remove it to save this note!')
+    
+    try {
+      await api.post('/movienotes', { title, description, rating, tags })
+      alert('file saved successfully!')
+      navigate(-1)
+
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert('unable to login into account, try again later')
+      }
+    }
   }
 
   return (
@@ -79,7 +97,9 @@ export function Create () {
         </section>
         <div className="buttons">
           <Button title='Delete movie'/>
-          <Button title='Save changes'/>
+          <Button title='Save changes'
+            onClick={handleSaveData}
+          />
         </div>
       </Form>
     </Container>
