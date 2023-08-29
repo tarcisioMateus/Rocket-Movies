@@ -39,6 +39,7 @@ export const Profile = styled.div`
       color: ${ ({theme}) => theme.COLORS.GRAY_300 };
       background: none;
       border: none;
+      white-space: nowrap;
     }
   }
 
