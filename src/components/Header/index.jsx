@@ -10,14 +10,12 @@ import { Input } from "../Input"
 import { Container, Profile } from "./styles"
 
 export function Header ({ handleHomeSearch = null }) {
-
   const { logOut, user } = useAuth()
   const navigate = useNavigate()
 
   const [avatar, setAvatar] = useState( 
     user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceHolder 
   )
-  const [search, setSearch] = useState('')
 
   function handleLogOut() {
     navigate('/')
@@ -25,9 +23,9 @@ export function Header ({ handleHomeSearch = null }) {
   }
 
   function handleSearchOutOfHome( event ) {
-    setSearch(event.target.value)
+    const search = event.target.value
     localStorage.setItem('@rocketMovies:search', search)
-    navigate(-1)
+    navigate('/')
   }
 
   return (

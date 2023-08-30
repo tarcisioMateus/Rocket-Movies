@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.button`
   background-color: ${ ({theme}) => theme.COLORS.PINKTRANSPARANT};
   padding: 3.2rem;
   border-radius: 1.6rem;
+  border: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
   cursor: pointer;
 
@@ -16,6 +21,7 @@ export const Container = styled.div`
   >p {
     font-size: 1.6rem;
     line-height: 1.9rem;
+    text-align: justify;
 
     height: 3.8rem;
     overflow: hidden;

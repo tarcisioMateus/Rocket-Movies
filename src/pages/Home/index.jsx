@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { api } from '../../services'
 
 import { FiPlus } from 'react-icons/fi'
 
@@ -9,12 +11,42 @@ import { Card } from "../../components/Card"
 import { Container, Add, Content } from "./styles"
 
 export function Home () {
+  const [search, setSearch] = useState('')
+  const [notes, setNotes] = useState([])
 
   const navigate = useNavigate()
 
+  function handleHomeSearch(event) {
+    const latestSearch = event.target.value
+    setSearch(latestSearch)
+  }
+
+  useEffect(() => {
+    const latestSearch = localStorage.getItem('@rocketMovies:search')
+    if (latestSearch) {
+      const inputSearch = document.getElementById('Search by title')
+      inputSearch.value = latestSearch
+      inputSearch.focus()
+
+      setSearch(latestSearch)
+      localStorage.removeItem('@rocketMovies:search')
+    }
+  }, [])
+
+  useEffect(() => {
+    async function fetchMovieNotes() {
+      const response = await api.get(`/movienotes?title=${search}`)
+      setNotes(response.data)
+    }
+
+    fetchMovieNotes()
+  }, [search])
+
   return (
     <Container>
-      <Header/>
+      <Header
+        handleHomeSearch= {handleHomeSearch}
+      />
       
       <Add>
         <h1>My Movies</h1>
@@ -25,38 +57,17 @@ export function Home () {
 
       <Content>
 
-        <Card title='Interestellar' id={1} 
-          description='Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade
-          agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua
-            família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado 
-            por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" 
-            é uma inteligência desconhecida que está enviando mensagens codificadas através de 
-            radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação 
-            secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de 
-            minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições'
-          tags={[{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}]} stars={4}/>
-        
-        <Card title='Interestellar' id={2}
-          description='Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade
-          agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua
-            família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado 
-            por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" 
-            é uma inteligência desconhecida que está enviando mensagens codificadas através de 
-            radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação 
-            secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de 
-            minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições'
-          tags={[{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}]} stars={3}/>
-        
-        <Card title='Interestellar' id={3}
-          description='Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade
-          agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua
-            família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado 
-            por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" 
-            é uma inteligência desconhecida que está enviando mensagens codificadas através de 
-            radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação 
-            secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de 
-            minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições'
-          tags={[{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}]} stars={2}/>
+        {
+          notes &&
+          notes.map( note => {
+            return <Card
+                key={String(note.id)} 
+                title={note.title} description={note.description} 
+                tags={note.tags} stars={note.rating}
+                onClick={() => navigate(`/preview/${note.id}`)}
+              />
+          })
+        }
         
       </Content>
     
