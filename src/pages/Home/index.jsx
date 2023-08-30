@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import { api } from '../../services'
 
 import { FiPlus } from 'react-icons/fi'
+import { FaSadTear } from 'react-icons/fa'
 
 import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
 import { Card } from "../../components/Card"
 
-import { Container, Add, Content } from "./styles"
+import { Container, Add, Content, NotFound } from "./styles"
 
 export function Home () {
   const [search, setSearch] = useState('')
@@ -56,7 +57,6 @@ export function Home () {
       </Add>
 
       <Content>
-
         {
           notes &&
           notes.map( note => {
@@ -69,6 +69,14 @@ export function Home () {
           })
         }
         
+        {
+          !notes.length &&
+          <NotFound>
+            <FaSadTear/>
+            <h3>Nothing found</h3>
+          </NotFound>
+          
+        }
       </Content>
     
     </Container>

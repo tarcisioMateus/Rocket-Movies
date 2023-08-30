@@ -35,3 +35,21 @@ export const Content = styled.div`
   padding-right: 0.8rem;
 
 `
+
+export const NotFound = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  >svg {
+    color: ${ ({theme}) => theme.COLORS.GRAY_300 };
+    font-size: 20rem;
+  }
+
+  >h3 {
+    font-size: 7.5rem;
+    color: ${ ({theme}) => theme.COLORS.GRAY_300 };
+    font-weight: 400;
+  }
+`
