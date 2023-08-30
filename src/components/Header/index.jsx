@@ -9,23 +9,35 @@ import { Input } from "../Input"
 
 import { Container, Profile } from "./styles"
 
-export function Header () {
+export function Header ({ handleHomeSearch = null }) {
+
   const { logOut, user } = useAuth()
   const navigate = useNavigate()
 
   const [avatar, setAvatar] = useState( 
     user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceHolder 
   )
+  const [search, setSearch] = useState('')
 
   function handleLogOut() {
     navigate('/')
     logOut()
   }
 
+  function handleSearchOutOfHome( event ) {
+    setSearch(event.target.value)
+    localStorage.setItem('@rocketMovies:search', search)
+    navigate(-1)
+  }
+
   return (
     <Container>
       <h1>RocketMovies</h1>
-      <Input label='Search by title'/>
+      <Input label='Search by title'
+        onChange={event => {
+          return ( handleHomeSearch ? handleHomeSearch(event) : handleSearchOutOfHome(event) )
+        }}
+      />
       <Profile>
         <div>
 

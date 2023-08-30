@@ -12,7 +12,7 @@ export function Stars ({amount, large = false}) {
 }
 
 function getArrayRepresentation (amount) {
-  switch (amount) {
+  switch (Math.round(amount)) {
     case 0:
       return [0,0,0,0,0]
     case 1:
