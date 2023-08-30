@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../services'
 
@@ -23,6 +23,7 @@ export function Create () {
   const [tags, setTags] = useState([])
 
   const navigate = useNavigate()
+  const formRef = useRef(null);
 
   function addNewTag() {
     if (!newTag) return
@@ -51,10 +52,20 @@ export function Create () {
     }
   }
 
+  function handleCleanAllFields() {
+    setTitle('')
+    setDescription('')
+    setRating('')
+    setTags([])
+    setNewTag('')
+
+    formRef.current.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <Container>
       <Header/>
-      <Form>
+      <Form ref={formRef}>
         <ButtonText title='back' icon={BsArrowLeft}
           onClick={ () => navigate(-1)}
         />
@@ -62,15 +73,18 @@ export function Create () {
         <div className="inputs">
 
           <Input label='title'
+            value={title}
             onChange={ e => setTitle(e.target.value)}
           />
           <Input label='rating (between 0 - 5)'
+            value={rating}
             onChange={ e => setRating(e.target.value)}
           />
 
         </div>
 
         <TextArea label='details'
+          value={description}
           onChange={ e => setDescription(e.target.value)}
         />
         <section>
@@ -96,7 +110,9 @@ export function Create () {
           </div>
         </section>
         <div className="buttons">
-          <Button title='Delete movie'/>
+          <Button title='Clean fields'
+            onClick={handleCleanAllFields}
+          />
           <Button title='Save changes'
             onClick={handleSaveData}
           />
