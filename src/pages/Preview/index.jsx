@@ -12,6 +12,7 @@ import { Header } from "../../components/Header"
 import { ButtonText } from "../../components/ButtonText"
 import { Stars } from '../../components/Stars'
 import { Tag } from '../../components/Tag'
+import { Button } from "../../components/Button"
 
 import { Container, Content, TimeUser } from "./styles"
 
@@ -33,6 +34,15 @@ export function Preview() {
 
     const formatedTime = `${D}/${M}/${Y.slice(-2)} at ${h}:${m}`
     return formatedTime
+  }
+
+  async function handleDeleteMovie() {
+    const itsOkay = window.confirm('are U sure, that you wanna delete this Movie note?')
+
+    if (itsOkay) {
+      await api.delete(`/movienotes/${params.id}`)
+      navigate(-1)
+    }
   }
 
   useEffect(() => {
@@ -87,6 +97,11 @@ export function Preview() {
         <p>
           {data.description}
         </p>
+
+        <Button
+          title='Delete Movie'
+          onClick={handleDeleteMovie}
+        />
       </Content>
     </Container>
   )

@@ -39,6 +39,16 @@ export const Content = styled.div`
     font-size: 1.6rem;
     line-height: 2.1rem;
   }
+
+  button:last-of-type {
+    margin-top: 4rem;
+    transition: all 300ms;
+
+    &:hover {
+      background-color: ${ ({theme}) => theme.COLORS.BACKGROUND_900};
+      color: ${ ({theme}) => theme.COLORS.PINK};
+    }
+  }
 `
 
 export const TimeUser = styled.div`
