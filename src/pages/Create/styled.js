@@ -39,7 +39,9 @@ export const Form = styled.form`
 
     .tags {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      justify-content: center;
       gap: 2.4rem;
       padding: 1.6rem;
       border-radius: 0.8rem;

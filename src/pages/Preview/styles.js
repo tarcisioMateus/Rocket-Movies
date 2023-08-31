@@ -29,6 +29,7 @@ export const Content = styled.div`
 
   .tags {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.8rem;
     margin: 4rem 0;

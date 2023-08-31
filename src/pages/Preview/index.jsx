@@ -1,4 +1,9 @@
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from "react"
+import { useNavigate, useParams } from 'react-router-dom'
+import { useAuth } from "../../hooks/auth"
+
+import { api } from '../../services'
+import avatarPlaceHolder from '../../assets/avatar_placeholder.svg'
 
 import { BsArrowLeft } from 'react-icons/bs'
 import { CiClock2 } from 'react-icons/ci'
@@ -11,8 +16,33 @@ import { Tag } from '../../components/Tag'
 import { Container, Content, TimeUser } from "./styles"
 
 export function Preview() {
+  const { user } = useAuth()
 
   const navigate = useNavigate()
+  const params = useParams()
+
+  const [data, setData] = useState({})
+  const [avatar, setAvatar] = useState( 
+    user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceHolder 
+  )
+
+  function getDateRightlyFormated(dateToBeFormated) {
+    const [date, time] = dateToBeFormated.split(' ')
+    const [ Y, M, D ] = date.split('-')
+    const [ h, m, s] = time.split(':')
+
+    const formatedTime = `${D}/${M}/${Y.slice(-2)} at ${h}:${m}`
+    return formatedTime
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await api.get(`/movienotes/${params.id}`)
+      setData(response.data)
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <Container>
@@ -23,25 +53,39 @@ export function Preview() {
           onClick={ () => navigate(-1)}
         />
         <div className="header">
-          <h2>Interestellar</h2>
-          <Stars amount={2} large/>
+          <h2>
+            {data.title}
+          </h2>
+          <Stars 
+            amount={data.rating} large
+          />
         </div>
         <TimeUser>
           <img 
-          src = 'https://github.com/tarcisioMateus.png'
+          src = {avatar}
           alt = "Picture from user"/>
-          <span>By Tarcísio Mateus</span>
+          <span>By {user.name}</span>
           <CiClock2/>
-          <p>23/05/22 at 08:00</p>
+          <p>
+            {
+              data.updated_at &&
+              getDateRightlyFormated(data.updated_at)
+            }
+          </p>
         </TimeUser>
         
         <div className="tags">
-          { [{title: 'Sci-fi', id: 1}, {title: 'Drama', id: 2}, {title: 'Family', id: 3}].map( tag => <Tag title={tag.title} key={tag.id}/>)}
+          {
+            data.tags &&
+            data.tags.map( tag => {
+              return <Tag
+                title={tag.name} key={String(tag.id)}
+              />
+            })
+          }
         </div>
         <p>
-          Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições de sobrevivência para a espécie humana. As "missões Lázaro" enviadas anos antes identificaram três planetas potencialmente habitáveis orbitando o buraco negro Gargântua: Miller, Edmunds e Mann – nomeados em homenagem aos astronautas que os pesquisaram. Brand recruta Cooper para pilotar a nave espacial Endurance e recuperar os dados dos astronautas; se um dos planetas se mostrar habitável, a humanidade irá seguir para ele na instalação da NASA, que é na realidade uma enorme estação espacial. A partida de Cooper devasta Murphy.
-          <br/><br/>
-          Além de Cooper, a tripulação da Endurance é formada pela bióloga Amelia, filha de Brand; o cientista Romilly, o físico planetário Doyle, além dos robôs TARS e CASE. Eles entram no buraco de minhoca e se dirigem a Miller, porém descobrem que o planeta possui enorme dilatação gravitacional temporal por estar tão perto de Gargântua: cada hora na superfície equivale a sete anos na Terra. Eles entram em Miller e descobrem que é inóspito já que é coberto por um oceano raso e agitado por ondas enormes. Uma onda atinge a tripulação enquanto Amelia tenta recuperar os dados de Miller, matando Doyle e atrasando a partida. Ao voltarem para a Endurance, Cooper e Amelia descobrem que 23 anos se passaram.
+          {data.description}
         </p>
       </Content>
     </Container>
