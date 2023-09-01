@@ -5,8 +5,32 @@ export const Container = styled.div`
   height: 100vh;
 
   display: grid;
-  grid-template-areas: "header" "add" "content";
+  grid-template-areas: 
+    "header header" 
+    "menu add" 
+    "menu content";
   grid-template-rows: 11.6rem 13.2 auto;
+  grid-template-columns: 35.4rem auto;
+`
+
+export const Menu = styled.section`
+  grid-area: menu;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 4.8rem 6.4rem 5.8rem 12.6rem;
+
+  background-color: ${ ({theme}) => theme.COLORS.PINKTRANSPARANT};
+  border-radius: 1.6rem;
+  border: none;
+  padding: 2.4rem 0;
+
+  >h2 {
+    opacity: 0.5;
+  }
 `
 
 export const Add = styled.div`
@@ -16,7 +40,7 @@ export const Add = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  padding: 4.8rem 12.6rem 3.6rem;
+  padding: 4.8rem 12.6rem 3.6rem 0;
 
   >button {
     width: fit-content;
@@ -30,7 +54,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  margin: 0 12.6rem;
+  margin-right: 12.6rem;
   margin-bottom: 5.8rem;
   padding-right: 0.8rem;
 
@@ -44,11 +68,11 @@ export const NotFound = styled.div`
 
   >svg {
     color: ${ ({theme}) => theme.COLORS.GRAY_300 };
-    font-size: 20rem;
+    font-size: 17rem;
   }
 
   >h3 {
-    font-size: 7.5rem;
+    font-size: 7rem;
     color: ${ ({theme}) => theme.COLORS.GRAY_300 };
     font-weight: 400;
   }

@@ -7,6 +7,10 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   padding: 0 14.4rem;
+
+  >button {
+  color: ${ ({ theme}) => theme.COLORS.PINK };
+  }
 `
 
 export const Profile = styled.div`

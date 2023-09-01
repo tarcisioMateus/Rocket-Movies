@@ -9,7 +9,7 @@ export const Container = styled.button`
 
 
   font-size: 1.6rem;
-  color: ${ ({ theme}) => theme.COLORS.PINK };
+  color: ${ ({ theme}) => theme.COLORS.WHITE };
 
   position: relative;
 `

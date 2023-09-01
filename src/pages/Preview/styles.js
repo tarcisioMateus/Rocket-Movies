@@ -14,6 +14,10 @@ export const Content = styled.div`
   margin: 4rem 12.3rem 8rem;
   padding-right: 1.6rem;
 
+  >button:first-of-type {
+  color: ${ ({ theme}) => theme.COLORS.PINK };
+  }
+  
   .header {
     display: flex;
     align-items: center;

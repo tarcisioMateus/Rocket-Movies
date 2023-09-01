@@ -14,6 +14,10 @@ export const Form = styled.form`
   margin: 4rem 12.3rem 8rem;
   padding-right: 1.6rem;
   
+  >button:first-of-type {
+  color: ${ ({ theme}) => theme.COLORS.PINK };
+  }
+  
   >h2 {
     margin: 2.4rem 0 4rem;
     font-weight: 500;

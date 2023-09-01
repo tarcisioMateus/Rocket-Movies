@@ -9,7 +9,7 @@ import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
 import { Card } from "../../components/Card"
 
-import { Container, Add, Content, NotFound } from "./styles"
+import { Container, Menu, Add, Content, NotFound } from "./styles"
 
 export function Home () {
   const [search, setSearch] = useState('')
@@ -49,6 +49,10 @@ export function Home () {
         handleHomeSearch= {handleHomeSearch}
       />
       
+      <Menu>
+        <h2> Tags </h2>
+      </Menu>
+
       <Add>
         <h1>My Movies</h1>
         <Button icon={FiPlus} title='add movie'
