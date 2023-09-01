@@ -17,7 +17,18 @@ export function Home () {
   const [notes, setNotes] = useState([])
 
   const [tags, setTags] = useState([])
+  const [selectedTags, setSelectedTags] = useState([])
 
+  function handleSelectedTag(tagName) {
+    if (tagName === 'all') return setSelectedTags([])
+
+    const tagAlreadySelected = selectedTags.includes(tagName)
+    if (tagAlreadySelected) {
+      setSelectedTags(prev => prev.filter( tag => tag !== tagName))
+    } else {
+      setSelectedTags(prev => [...prev, tagName])
+    }
+  }
 
   const navigate = useNavigate()
 
@@ -53,12 +64,12 @@ export function Home () {
 
   useEffect(() => {
     async function fetchMovieNotes() {
-      const response = await api.get(`/movienotes?title=${search}`)
+      const response = await api.get(`/movienotes?title=${search}&tags=${selectedTags}`)
       setNotes(response.data)
     }
 
     fetchMovieNotes()
-  }, [search])
+  }, [search, selectedTags])
 
   return (
     <Container>
@@ -71,6 +82,8 @@ export function Home () {
 
         <ButtonText 
           title='all'
+          onClick={() => handleSelectedTag('all')}
+          isActive={ selectedTags.length == 0}
         />
         {
           tags &&
@@ -78,6 +91,8 @@ export function Home () {
             return <ButtonText
               key={index}
               title={tag}
+              onClick={() => handleSelectedTag(tag)}
+              isActive={ selectedTags.includes(tag)}
             />
           })
         }

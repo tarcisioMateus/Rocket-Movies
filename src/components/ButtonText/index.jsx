@@ -1,10 +1,10 @@
 import { Container } from './styles'
 
-export function ButtonText ({ title, selected = false, icon: Icon, ...rest }) {
+export function ButtonText ({ title, isActive = false, icon: Icon, ...rest }) {
   return (
     <Container {...rest} 
       type='button'
-      $selected = {selected}
+      $isactive = {isActive}
     >
       { Icon && <Icon/> }
       {title}
