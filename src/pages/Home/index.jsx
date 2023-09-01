@@ -15,6 +15,9 @@ export function Home () {
   const [search, setSearch] = useState('')
   const [notes, setNotes] = useState([])
 
+  const [tags, setTags] = useState([])
+
+
   const navigate = useNavigate()
 
   function handleHomeSearch(event) {
@@ -23,15 +26,28 @@ export function Home () {
   }
 
   useEffect(() => {
-    const latestSearch = localStorage.getItem('@rocketMovies:search')
-    if (latestSearch) {
-      const inputSearch = document.getElementById('Search by title')
-      inputSearch.value = latestSearch
-      inputSearch.focus()
 
-      setSearch(latestSearch)
-      localStorage.removeItem('@rocketMovies:search')
+    function continueSearchThatStartedOutOfHome() {
+
+      const latestSearch = localStorage.getItem('@rocketMovies:search')
+      if (latestSearch) {
+        const inputSearch = document.getElementById('Search by title')
+        inputSearch.value = latestSearch
+        inputSearch.focus()
+  
+        setSearch(latestSearch)
+        localStorage.removeItem('@rocketMovies:search')
+      }
     }
+
+    async function fetchTags() {
+      const response = await api.get('/movietags')
+      setTags(response.data)
+    }
+
+    continueSearchThatStartedOutOfHome()
+
+    fetchTags()
   }, [])
 
   useEffect(() => {
