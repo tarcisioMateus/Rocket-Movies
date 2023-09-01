@@ -9,7 +9,7 @@ export const Container = styled.button`
 
 
   font-size: 1.6rem;
-  color: ${ ({ theme}) => theme.COLORS.WHITE };
+  color: ${ ({ theme, $selected }) => { $selected ? theme.COLORS.PINK : theme.COLORS.WHITE} };
 
   position: relative;
 `

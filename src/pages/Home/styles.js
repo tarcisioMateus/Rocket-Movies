@@ -30,6 +30,12 @@ export const Menu = styled.section`
 
   >h2 {
     opacity: 0.5;
+    margin-bottom: 2.4rem;
+  }
+
+  >button {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
   }
 `
 

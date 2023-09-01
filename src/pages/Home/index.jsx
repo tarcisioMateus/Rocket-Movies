@@ -6,6 +6,7 @@ import { FiPlus } from 'react-icons/fi'
 import { FaSadTear } from 'react-icons/fa'
 
 import { Header } from "../../components/Header"
+import { ButtonText } from "../../components/ButtonText"
 import { Button } from "../../components/Button"
 import { Card } from "../../components/Card"
 
@@ -67,6 +68,19 @@ export function Home () {
       
       <Menu>
         <h2> Tags </h2>
+
+        <ButtonText 
+          title='all'
+        />
+        {
+          tags &&
+          tags.map( (tag, index) => {
+            return <ButtonText
+              key={index}
+              title={tag}
+            />
+          })
+        }
       </Menu>
 
       <Add>
