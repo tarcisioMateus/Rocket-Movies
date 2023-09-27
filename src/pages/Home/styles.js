@@ -57,6 +57,7 @@ export const Content = styled.div`
   grid-area: content;
   overflow-y: auto;
 
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
